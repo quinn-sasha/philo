@@ -32,12 +32,12 @@ fclean: clean
 
 re: fclean all
 
-debug: CC := clang
-debug: CFLAGS += -fsanitize=thread -g
-debug: re
+test_data_race: CC := clang
+test_data_race: CFLAGS += -fsanitize=thread -g
+test_data_race: re
 
 # TODO
-test: debug
+test: test_data_race
 ./test.sh
 
-.PHONY: all clean fclean re debug test
+.PHONY: all clean fclean re test_data_race test

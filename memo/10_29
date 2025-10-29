@@ -37,4 +37,30 @@ strlen() and strcmp()で最大値より大きいか検出できる
 (now - start_of_last_meal_time) <= time_to_die 生存
 (now - start_of_last_meal_time) > time_to_die 餓死
 
+引数の情報は一つの構造体にまとめる（時間には int よりも long とかの方が良さそう）
+引数の解析で無効な入力なら、EXIT_FAILUREを返す
+INT_MAX(SIZE_MAX) とft_strcmp()で比べて、INT_MAX より大きければ無効とする
+number_of_times_each_philosopher_must_eat == 0 だと有効ではないか？
+開始時刻を今の1秒後に設定しておいて(マイクロ秒は切り捨て)
 
+哲学者構造体に必要な情報:
+- thread id
+- info へのポインタ
+- id
+- eat_count
+- last_eat_time
+- mutex for eat_count and last_eat_time (哲学者と監視者の2種類が共有することがあるので、mutexが必要)
+- 行動状態(optional)
+- フォークへのぽいんた
+
+監視者の情報：
+- thread id
+- シュミレーションの終了条件を示すフラグ
+- mutex for write (printf) or is_dead(is_finished)
+mutex for log は監視者が使わなくても良いのか（監視者がログを書かなくてもいいのか）
+監視者の役割は、シュミレーションの続行判断と死者が出たことの判定か
+
+next_eat_at 変数に、usleep_until(next_eat_at)を呼ぶことで、考える時間の長さを調整できる（便利）
+
+
+監視者のコードを読んでいた

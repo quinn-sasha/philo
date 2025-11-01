@@ -4,4 +4,4 @@
 #define INT_MAX_STRING "2147483647"
 #define MIN_NUM_ARGUMENTS 5
 
-int parse_argsument(t_argss *args, int argsc, char *argsv[]);
+int parse_argsument(t_args *args, int argc, char *argv[]);

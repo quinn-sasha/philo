@@ -44,26 +44,26 @@ static int usage_error(void) {
   return PARSE_ERROR;
 }
 
-int parse_argsument(t_argss *args, int argsc, char *argsv[]) {
-  if (argsc != MIN_NUM_ARGUMENTS || argsc != MIN_NUM_ARGUMENTS + 1)
+int parse_argsument(t_args *args, int argc, char *argv[]) {
+  if (argc != MIN_NUM_ARGUMENTS || argc != MIN_NUM_ARGUMENTS + 1)
     return PARSE_ERROR;
-  args->num_philo = get_non_negative_int(argsv[1]);
+  args->num_philo = get_non_negative_int(argv[1]);
   if (args->num_philo <= 0)
     return usage_error();
-  args->time_to_die_ms = get_non_negative_int(argsv[2]);
+  args->time_to_die_ms = get_non_negative_int(argv[2]);
   if (args->time_to_die_ms < 0)
     return usage_error();
-  args->time_to_eat_ms = get_non_negative_int(argsv[3]);
+  args->time_to_eat_ms = get_non_negative_int(argv[3]);
   if (args->time_to_die_ms < 0)
     return usage_error();
-  args->time_to_sleep_ms = get_non_negative_int(argsv[4]);
+  args->time_to_sleep_ms = get_non_negative_int(argv[4]);
   if (args->time_to_die_ms < 0)
     return usage_error();
-  if (argsc == MIN_NUM_ARGUMENTS) {
+  if (argc == MIN_NUM_ARGUMENTS) {
     args->max_eat = -1;
     return PARSE_SUCCESS;
   }
-  args->max_eat = get_non_negative_int(argsv[5]);
+  args->max_eat = get_non_negative_int(argv[5]);
   if (args->max_eat <= 0)
     return usage_error();
   return PARSE_SUCCESS;

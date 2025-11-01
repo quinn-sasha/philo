@@ -9,10 +9,11 @@
 #include <stdbool.h>
 #include "libftsubset.h"
 #include "parse_argument.h"
+#include "init.h"
 
 typedef struct timeval t_timeval;
 typedef struct s_data t_data;
-typedef struct s_argss t_argss;
+typedef struct s_args t_args;
 typedef struct s_philo t_philo;
 typedef struct s_fork t_fork;
 typedef struct s_monitor t_monitor;
@@ -24,7 +25,7 @@ typedef struct s_monitor t_monitor;
 * 0 <= time_to_sleep_ms
 * 1 <= max_eat
 */
-struct s_argss {
+struct s_args {
   int num_philo;
   int time_to_die_ms;
   int time_to_eat_ms;
@@ -57,9 +58,9 @@ struct s_philo {
 
 struct s_data {
   t_timeval started_at;
-  t_timeval optimal_interval;
-  t_argss args;
+  int optimal_interval_ms;
+  t_args args;
   t_fork forks[MAX_PHILO];
-  t_philo philos[MAX_PHILO];
+  t_philo philosophers[MAX_PHILO];
 };
 

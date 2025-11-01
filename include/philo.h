@@ -9,8 +9,9 @@
 #include <stdbool.h>
 #include "libftsubset.h"
 #include "parse_argument.h"
-#include "init.h"
 #include "utils.h"
+
+void init_data(t_data *data);
 
 typedef struct timeval t_timeval;
 typedef struct s_data t_data;

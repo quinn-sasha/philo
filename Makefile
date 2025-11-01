@@ -9,7 +9,13 @@ RM := rm -f
 RMDIR := rm -rf
 
 # TODO
-SRCS :=
+SRCS := $(SRC_DIR)/main.c \
+				$(SRC_DIR)/parse_argument/parse_argument.c \
+        $(SRC_DIR)/libftsubset/ft_atoi.c \
+        $(SRC_DIR)/libftsubset/ft_isdigit.c \
+        $(SRC_DIR)/libftsubset/ft_putchar_fd.c \
+        $(SRC_DIR)/libftsubset/ft_putstr_fd.c \
+        $(SRC_DIR)/libftsubset/ft_strcmp.c \
 
 OBJ_DIR := objs
 OBJS := $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
